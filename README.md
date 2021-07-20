@@ -12,3 +12,6 @@ The workspace contains two folders by default, where:
 ## Dependency Management
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
+## APP Diagrams
+Diagrams can be found in this [link] (https://drive.google.com/file/d/1PCp5rCUoY5q5JiX7-KNucZCApVjtTde_/view)

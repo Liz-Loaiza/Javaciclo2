@@ -11,7 +11,7 @@ public class App {
     private boolean estadoCivil;
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main2(String[] args) throws Exception {
         System.out.println("Hello, World!");
 
         /** COMENTARIOS DOBLE
@@ -31,6 +31,7 @@ public class App {
         resultado1--;
         resultado1 = -resultado1; //el valor negativo del resultado
         resultado1= +resultado1;
+        resultado2+= resultado2 // resultado2= resultado2 + resultado2
 
         //Operadores logicos
         boolean respuesta= true;
@@ -51,9 +52,11 @@ public class App {
         else if(respuesta) {
             
         }
-        //CTR+SPACE para que salga las opciones
+        //CTR+SPACE para que salga las opciones de codigo
 
     }
 }
 
 
+//src queda el codigo fuente, allo se organizan subcarpetas que se denominan paquetes
+//java se coloca como estructura MVC, en java se separan los elementos (vistas, controladres)

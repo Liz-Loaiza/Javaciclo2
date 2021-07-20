@@ -1,8 +1,7 @@
 package model; //es model porque esta en la carpeta que se denomina asi
 
-import java.net.CacheRequest;
+import java.util.ArrayList;
 
-import javax.print.DocFlavor.STRING;
 
 //Wallet archivo con mayuscula, ya que la clase empieza asi, y deben coincidir con la clase
 public class Wallet {
@@ -15,6 +14,9 @@ public class Wallet {
     public static final int TOPE_TRANSACCION = 200000;
     public static final double TAZA_TRANSFERENCIA = 0.02;
 
+
+    private ArrayList<Transaction>  movimientos; //una lista que guarda diferentes cosas con <> permite para solo un tipo de dato, en este caso del tipo movimientos
+
     //Para crear el metodo constructor
      public Wallet() {
          super();
@@ -22,6 +24,8 @@ public class Wallet {
          saldo=0;
          tieneLimite= true;
          meta=0;
+
+         movimientos= new ArrayList<>(); //un conrtructr para que tenga espacio de meemoriaq
 
      }
 //metodos accesorios o de accesibilidad, para acceder a los datos de los atributos por que son privados
@@ -45,6 +49,8 @@ public class Wallet {
             return "No se puede superar el limite" + CAPACIDAD_MAXIMA;
         }
         saldo+= value;
+        Transaction ingreso= new Transaction(value, "hoy", 1, "Ingreso de dinero");
+        movimientos.add(ingreso);
         if(verificarMeta()){
             System.out.println("Has cumplido la meta");
         }
@@ -58,6 +64,9 @@ public class Wallet {
         }
 
         saldo-= value;
+
+        Transaction egreso= new Transaction(value, "hoy", 2, "Retiro de dinero");
+        movimientos.add(egreso);
         return "Transaccion exitosa, nuevo saldo " + saldo;
     }
 
@@ -69,6 +78,8 @@ public class Wallet {
         }
         if (saldo > 10000){
             setTieneLimite(false); 
+            Transaction limites= new Transaction(1000, "hoy", 2, "Romper limites");
+            movimientos.add(limites);
             saldo-= 10000;
             return "Se rompio el limite, el nuevo saldo es " + saldo;
         }
@@ -106,6 +117,12 @@ public class Wallet {
         return "La segunda cuenta es mayor";
     }
 
+    public void displayMovimientos(){
+        for (Transaction transaction : movimientos) {
+            System.out.println(transaction);
+        }   //for each
+    }
+
     public String trasferirDinero(int value, Wallet otraWallet) {
 
         takeMoney(value);
@@ -116,3 +133,4 @@ public class Wallet {
 
     }
 }
+
